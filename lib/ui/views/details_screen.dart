@@ -1,13 +1,16 @@
 
+import 'package:calculator/model/provider.dart';
 import 'package:calculator/util/styling.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DetailsScreen extends StatelessWidget {
-  final String details;
-  const DetailsScreen({super.key, required this.details});
+  const DetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final watcher = context.watch<CalculatorModel>();
+
     return Padding(
         padding: insets(),
         child: Container(
@@ -18,7 +21,8 @@ class DetailsScreen extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(5))
             ),
             child: Center(
-                child: Text(details,
+                child: Text(
+                    watcher.display,
                     style: const TextStyle(
                         color: Colors.black,
                         fontSize: 20
