@@ -10,6 +10,7 @@ class CalculatorModel extends ChangeNotifier{
 
   String _display = "";
   String get display => _display;
+
   bool _isNatural = false;
   bool get isNatural => _isNatural;
 
@@ -69,14 +70,14 @@ class CalculatorModel extends ChangeNotifier{
   }
 
   void numberPressed(String number){
-      _display += number;
-      if(operator.isEmpty){
-        firstNumber = double.tryParse(_display);
-      }
-      secondNumber = double.tryParse(_display.substring(
-          display.indexOf(operator) + 1
-      ));
-      notifyListeners();
+    _display += number;
+    if(operator.isEmpty){
+      firstNumber = double.tryParse(_display);
+    } else {
+      secondNumber = double.tryParse(
+          _display.substring(_display.indexOf(operator) + 1));
+    }
+    notifyListeners();
   }
 
   /// TODO : Setup raise to power function
@@ -169,6 +170,7 @@ class CalculatorModel extends ChangeNotifier{
       notifyListeners();
   }
 
+  // Calls all the functions within the model
   void buttonsCallback(String btn){
     if (btn == "AC") { clearDisplay(); }
     else if(btn == "DEL") { delete(); }
@@ -180,7 +182,7 @@ class CalculatorModel extends ChangeNotifier{
     else if ("Pi Ran e".contains(btn)) { valuePressed(btn); }
     else if (btn == "2nd") { inverseValues();}
     else if ("Mr Mc M+ M-".contains(btn)) { memoryActions(btn); }
-    else { numberPressed(btn); }
+    else { numberPressed(btn); notifyListeners();}
     notifyListeners();
   }
 }
