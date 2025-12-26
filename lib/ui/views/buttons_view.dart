@@ -1,16 +1,16 @@
 
+import 'package:calculator/model/provider.dart';
 import 'package:calculator/ui/buttons/button.dart';
 import 'package:flutter/material.dart';
 import 'package:calculator/util/styling.dart';
+import 'package:provider/provider.dart';
 
 class ButtonsView extends StatelessWidget {
-  final ValueChanged<String> buttonCallback;
-  final bool isInverse;
-  const ButtonsView({super.key, required this.buttonCallback,
-    required this.isInverse});
+  const ButtonsView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final isInverse = context.watch<CalculatorModel>().isNatural;
 
     return Padding(
         padding: insets(),
@@ -25,95 +25,92 @@ class ButtonsView extends StatelessWidget {
                 padding: insets(),
                 child: Column(
                   children: <Widget>[
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Button(value: "Mr", onTap: buttonCallback, isScientific: true),
-                        Button(value: "Mc", onTap: buttonCallback, isScientific: true),
-                        Button(value: "<=", onTap: buttonCallback, isScientific: true),
-                        Button(value: "=>", onTap: buttonCallback, isScientific: true),
-                        Button(value: "M+", onTap: buttonCallback, isScientific: true),
-                        Button(value: "M-", onTap: buttonCallback, isScientific: true),
+                        Button(value: "Mr", isScientific: true),
+                        Button(value: "Mc", isScientific: true),
+                        Button(value: "<=", isScientific: true),
+                        Button(value: "=>", isScientific: true),
+                        Button(value: "M+", isScientific: true),
+                        Button(value: "M-", isScientific: true),
+                      ],
+                    ),
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Button(value: "sqrt", isScientific: true),
+                        Button(value: squareOf, isScientific: true),
+                        Button(value: cubeOf, isScientific: true),
+                        Button(value: raiseToPower, isScientific: true),
+                        Button(value: "log", isScientific: true),
+                        Button(value: "ln", isScientific: true),
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Button(value: "sqrt", onTap: buttonCallback, isScientific: true),
-                        Button(value: squareOf, onTap: buttonCallback, isScientific: true),
-                        Button(value: cubeOf, onTap: buttonCallback, isScientific: true),
-                        Button(value: raiseToPower, onTap: buttonCallback, isScientific: true),
-                        Button(value: "log", onTap: buttonCallback, isScientific: true),
-                        Button(value: "ln", onTap: buttonCallback, isScientific: true),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Button(value: "!", onTap: buttonCallback, isScientific: true),
-                        Button(value: "Pi", onTap: buttonCallback, isScientific: true),
-                        Button(value: "e", onTap: buttonCallback, isScientific: true),
+                        const Button(value: "!", isScientific: true),
+                        const Button(value: "Pi", isScientific: true),
+                        const Button(value: "e", isScientific: true),
                         Button(value: isInverse ? sinInverse : "sin" ,
-                            onTap: buttonCallback, isScientific: true),
+                            isScientific: true),
                         Button(value: isInverse ? cosInverse : "cos",
-                            onTap: buttonCallback, isScientific: true),
+                            isScientific: true),
                         Button(value: isInverse ? tanInverse : "tan",
-                            onTap: buttonCallback, isScientific: true),
+                            isScientific: true),
                       ],
                     ),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Button(value: "2nd", onTap: buttonCallback, isScientific: true),
-                        Button(value: "(-)", onTap: buttonCallback, isScientific: true),
-                        Button(value: "(", onTap: buttonCallback, isScientific: true),
-                        Button(value: ")", onTap: buttonCallback, isScientific: true),
-                        Button(value: "%", onTap: buttonCallback, isScientific: true),
-                        Button(value: "Ran", onTap: buttonCallback, isScientific: true),
+                        Button(value: "2nd", isScientific: true),
+                        Button(value: "(-)", isScientific: true),
+                        Button(value: "(", isScientific: true),
+                        Button(value: ")", isScientific: true),
+                        Button(value: "%", isScientific: true),
+                        Button(value: "Ran", isScientific: true),
                       ],
                     ),
                     const SizedBox(height: 10),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Button(value: "7", onTap: buttonCallback, isScientific: false),
-                        Button(value: "8", onTap: buttonCallback, isScientific: false),
-                        Button(value: "9", onTap: buttonCallback, isScientific: false),
-                        Button(value: "DEL", onTap: buttonCallback, isScientific: false,
-                          color: Colors.orange,),
-                        Button(value: "AC", onTap: buttonCallback, isScientific: false,
-                          color: Colors.orange,),
+                        Button(value: "7", isScientific: false),
+                        Button(value: "8", isScientific: false),
+                        Button(value: "9", isScientific: false),
+                        Button(value: "DEL", isScientific: false),
+                        Button(value: "AC", isScientific: false),
                       ],
                     ),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Button(value: "4", onTap: buttonCallback, isScientific: false),
-                        Button(value: "5", onTap: buttonCallback, isScientific: false),
-                        Button(value: "6", onTap: buttonCallback, isScientific: false),
-                        Button(value: "x", onTap: buttonCallback, isScientific: false),
-                        Button(value: "/", onTap: buttonCallback, isScientific: false),
+                        Button(value: "4", isScientific: false),
+                        Button(value: "5", isScientific: false),
+                        Button(value: "6", isScientific: false),
+                        Button(value: "×", isScientific: false),
+                        Button(value: "÷", isScientific: false),
                       ],
                     ),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Button(value: "1", onTap: buttonCallback, isScientific: false),
-                        Button(value: "2", onTap: buttonCallback, isScientific: false),
-                        Button(value: "3", onTap: buttonCallback, isScientific: false),
-                        Button(value: "+", onTap: buttonCallback, isScientific: false),
-                        Button(value: "-", onTap: buttonCallback, isScientific: false),
+                        Button(value: "1", isScientific: false),
+                        Button(value: "2", isScientific: false),
+                        Button(value: "3", isScientific: false),
+                        Button(value: "+", isScientific: false),
+                        Button(value: "-", isScientific: false),
                       ],
                     ),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Button(value: "0", onTap: buttonCallback, isScientific: false),
-                        Button(value: ".", onTap: buttonCallback, isScientific: false),
-                        Button(value: tenRaiseToNumerator, onTap: buttonCallback, isScientific: false),
-                        Button(value: "Ans", onTap: buttonCallback, isScientific: false),
-                        Button(value: "=", onTap: buttonCallback, isScientific: false,
-                          color: Colors.green.shade500,),
+                        Button(value: "0", isScientific: false),
+                        Button(value: ".", isScientific: false),
+                        Button(value: tenRaiseToNumerator, isScientific: false),
+                        Button(value: "Ans", isScientific: false),
+                        Button(value: "=", isScientific: false),
                       ],
                     )
                   ],
