@@ -1,7 +1,6 @@
 # calculator
- HEAD
 My personal scientific calculator. 
- Resolve README.md conflict during rebase
+Resolved README.md conflict during rebase
 
 Calculator App
 
