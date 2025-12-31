@@ -160,9 +160,11 @@ class CalculatorModel extends ChangeNotifier{
   }
 
   void delete(){
-    var del = display.substring(0,display.length - 1);
+    if(_display.isNotEmpty) {
+      var del = display.substring(0,display.length - 1);
       _display = del;
       notifyListeners();
+    }
   }
 
   // Switch to inverse values on buttons
