@@ -1,7 +1,6 @@
 
 import 'package:calculator/model/calc_logic.dart';
 import 'package:flutter/material.dart';
-import '../util/styling.dart';
 
 class CalculatorModel extends ChangeNotifier{
   String operator = "";
@@ -32,9 +31,11 @@ class CalculatorModel extends ChangeNotifier{
         }
       }
       // Checks list range first before assigning values to be retrieved 'Mr'
-      if (memory.isNotEmpty){
-        firstNumber = double.tryParse(memory[0]) ?? 0;
-        _display = firstNumber.toString();
+      else {
+        if (memory.isNotEmpty){
+          firstNumber = double.tryParse(memory[0]) ?? 0;
+          _display = firstNumber.toString();
+        }
       }
       notifyListeners();
   }
@@ -42,7 +43,7 @@ class CalculatorModel extends ChangeNotifier{
   void valuePressed(String value){
       _display += value;
       if(operator.isEmpty){
-        if(value == "Pi"){
+        if(value == "π"){
           firstNumber = piValue;
         }
         else if(value == "e"){
@@ -53,7 +54,7 @@ class CalculatorModel extends ChangeNotifier{
         }
       }
       else {
-        if(value == "Pi"){
+        if(value == "π"){
           secondNumber = double.tryParse(piValue.toString().substring(
               piValue.toString().indexOf(operator) + 1));
         }
@@ -81,25 +82,26 @@ class CalculatorModel extends ChangeNotifier{
   }
 
   /// TODO : Setup raise to power function
-  void raiseToPowerPressed(String op, double? second){
-    if(firstNumber == null) { return;}
-      operator = op;
-      _display += "^$second";
-      notifyListeners();
-  }
+  // void raiseToPowerPressed(String op, double? second){
+  //   if(firstNumber == null) { return;}
+  //     operator = op;
+  //     _display += "^$second";
+  //     notifyListeners();
+  // }
 
   void operatorPressed(String op){
     if(firstNumber == null) {return;}
-    else if (''' ! sqrt sin cos tan log ln $sinInverse $cosInverse $tanInverse
-    $squareOf $cubeOf $tenRaiseToNumerator '''.contains(op)){
+    else if ("! √ sin cos tan log₁₀ log₂ ln x² x³ sin⁻¹ cos⁻¹ tan⁻¹ 10ˣ"
+        .contains(op)){
         operator = op;
         secondNumber = 0;
         // Individual displays on operator pressed
-        if(op == squareOf) {_display = "${firstNumber!.toInt()}^2";}
-        else if(op == cubeOf) {_display = "${firstNumber!.toInt()}^3"; }
-        else if (op == tenRaiseToNumerator) {_display = "10^${firstNumber!.toInt()}";}
+        if(op == "x²") {_display = "${firstNumber!.toInt()}²";}
+        else if(op == "x³") {_display = "${firstNumber!.toInt()}³"; }
+        else if (op == "10ˣ") {_display = "10ˣ${firstNumber!.toInt()}";}
         else if ("!".contains(op)) {_display = "${firstNumber!.toInt()}!";}
-        else {_display = "$op($firstNumber)"; }
+        else if (op == "√") {_display = "$op$firstNumber";}
+        else {_display = "$op($firstNumber)";}
     }
 
     /// TODO : Setup Parenthesis
@@ -174,12 +176,12 @@ class CalculatorModel extends ChangeNotifier{
   void buttonsCallback(String btn){
     if (btn == "AC") { clearDisplay(); }
     else if(btn == "DEL") { delete(); }
-    else if ('''+-x/ sqrt sin cos tan log ln (-) ! ( ) % $squareOf $cubeOf 
-    $tenRaiseToNumerator $sinInverse $cosInverse $tanInverse '''.contains(btn))
+    else if (" + - × ÷ √ sin cos tan log₁₀ log₂ ln (-) ! ( ) % x² x³ 10ˣ "
+        "sin⁻¹ cos⁻¹ tan⁻¹ ".contains(btn))
     { operatorPressed(btn); }
-    else if (btn == raiseToPower) {raiseToPowerPressed(btn, secondNumber);}
+    //else if (btn == "xʸ") {raiseToPowerPressed(btn, secondNumber);}
     else if ("=".contains(btn)) { equalsPressed(); }
-    else if ("Pi Ran e".contains(btn)) { valuePressed(btn); }
+    else if ("π e Ran".contains(btn)) { valuePressed(btn); }
     else if (btn == "2nd") { inverseValues();}
     else if ("Mr Mc M+ M-".contains(btn)) { memoryActions(btn); }
     else { numberPressed(btn); notifyListeners();}

@@ -9,23 +9,25 @@ class CalculatorLogic {
         return a + b;
       case "-" :
         return a - b;
-      case "x" :
+      case "×" :
         return a * b;
-      case "/" :
+      case "÷" :
         if (b == 0) throw Exception("Cannot Divide by Zero");
         return a / b;
-      case 'sqrt' :
+      case '√' :
         return sqrt(a);
-      case squareOf :
+      case "x²" :
         return pow(a, 2).toDouble();
-      case cubeOf :
+      case "x³" :
         return pow(a, 3).toDouble();
-      case raiseToPower :
+      case "xʸ" :
         return pow(a, b).toDouble();
-      case tenRaiseToNumerator :
+      case "10ˣ" :
         return pow(10, a).toDouble();
-      case "log" :
+      case "log₁₀" :
         return log(a) / ln10;
+      // case "log₂" :
+      //   return
       case "ln" :
         return log(a);
       case "!" :
@@ -36,12 +38,14 @@ class CalculatorLogic {
         return trigCos(a);
       case "tan" :
         return trigTan(a);
-      case sinInverse :
+      case "sin⁻¹" :
         return trigSinInv(a);
-      case cosInverse :
+      case "cos⁻¹" :
         return trigCosInv(a);
-      case tanInverse :
+      case "tan⁻¹" :
         return trigTanInv(a);
+      // case "eˣ" :
+      //   return pow(eValue, a).toDouble();
       case "%" :
         return (a / 100) * b;
       case "(" :
