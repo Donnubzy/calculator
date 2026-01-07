@@ -91,14 +91,14 @@ class CalculatorModel extends ChangeNotifier{
 
   void operatorPressed(String op){
     if(firstNumber == null) {return;}
-    else if ("! √ sin cos tan log₁₀ log₂ ln x² x³ sin⁻¹ cos⁻¹ tan⁻¹ 10ˣ"
+    else if ("! √ sin cos tan log₁₀ log₂ ln x² x³ sin⁻¹ cos⁻¹ tan⁻¹ |oˣ"
         .contains(op)){
         operator = op;
         secondNumber = 0;
         // Individual displays on operator pressed
         if(op == "x²") {_display = "${firstNumber!.toInt()}²";}
         else if(op == "x³") {_display = "${firstNumber!.toInt()}³"; }
-        else if (op == "10ˣ") {_display = "10ˣ${firstNumber!.toInt()}";}
+        else if (op == "|oˣ") {_display = "10ˣ${firstNumber!.toInt()}";}
         else if ("!".contains(op)) {_display = "${firstNumber!.toInt()}!";}
         else if (op == "√") {_display = "$op$firstNumber";}
         else {_display = "$op($firstNumber)";}
