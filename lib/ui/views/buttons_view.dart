@@ -110,7 +110,7 @@ class ButtonsView extends StatelessWidget {
                       children: [
                         Button(value: "0", isScientific: false),
                         Button(value: ".", isScientific: false),
-                        Button(value: "10ˣ", isScientific: false),
+                        Button(value: "|oˣ", isScientific: false),
                         Button(value: "Ans", isScientific: false),
                         Button(value: "=", isScientific: false),
                       ],
