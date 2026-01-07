@@ -41,3 +41,5 @@ const String tenRaiseToNumerator = "   x\n|O";
 const String sinInverse = "asin";
 const String cosInverse = "acos";
 const String tanInverse = "atan";
+
+//10ˣ
