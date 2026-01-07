@@ -178,7 +178,7 @@ class CalculatorModel extends ChangeNotifier{
   void buttonsCallback(String btn){
     if (btn == "AC") { clearDisplay(); }
     else if(btn == "DEL") { delete(); }
-    else if (" + - × ÷ √ sin cos tan log₁₀ log₂ ln (-) ! ( ) % x² x³ 10ˣ "
+    else if (" + - × ÷ √ sin cos tan log₁₀ log₂ ln (-) ! ( ) % x² x³ |oˣ "
         "sin⁻¹ cos⁻¹ tan⁻¹ ".contains(btn))
     { operatorPressed(btn); }
     //else if (btn == "xʸ") {raiseToPowerPressed(btn, secondNumber);}
