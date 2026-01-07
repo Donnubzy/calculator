@@ -22,7 +22,7 @@ class CalculatorLogic {
         return pow(a, 3).toDouble();
       case "xʸ" :
         return pow(a, b).toDouble();
-      case "10ˣ" :
+      case "|oˣ" :
         return pow(10, a).toDouble();
       case "log₁₀" :
         return log(a) / ln10;
