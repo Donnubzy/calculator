@@ -179,8 +179,7 @@ class CalculatorModel extends ChangeNotifier{
     if (btn == "AC") { clearDisplay(); }
     else if(btn == "DEL") { delete(); }
     else if (" + - × ÷ √ sin cos tan log₁₀ log₂ ln (-) ! ( ) % x² x³ |oˣ "
-        "sin⁻¹ cos⁻¹ tan⁻¹ ".contains(btn))
-    { operatorPressed(btn); }
+        "sin⁻¹ cos⁻¹ tan⁻¹ ".contains(btn)) { operatorPressed(btn); }
     //else if (btn == "xʸ") {raiseToPowerPressed(btn, secondNumber);}
     else if ("=".contains(btn)) { equalsPressed(); }
     else if ("π e Ran".contains(btn)) { valuePressed(btn); }
