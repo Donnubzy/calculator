@@ -184,9 +184,9 @@ class CalculatorModel extends ChangeNotifier{
     //else if (btn == "xʸ") {raiseToPowerPressed(btn, secondNumber);}
     else if ("=".contains(btn)) { equalsPressed(); }
     else if ("π e Ran".contains(btn)) { valuePressed(btn); }
-    else if (btn == "2nd") { inverseValues();}
+    else if (btn == "2nd") { inverseValues(); }
     else if ("Mr Mc M+ M-".contains(btn)) { memoryActions(btn); }
-    else { numberPressed(btn); notifyListeners();}
+    else { numberPressed(btn);}
     notifyListeners();
   }
 }
