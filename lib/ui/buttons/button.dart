@@ -18,7 +18,7 @@ class Button extends StatelessWidget {
         child: Material(
             color: isScientific &&
                 value == "xʸ" || value == "eˣ" || value == "(" ||
-                value == ")" || value == "←" || value == "→"
+                value == ")" || value == "←" || value == "→" || value == "(−)"
                 ? Colors.grey
                 : isScientific ? Colors.black
                 : !isScientific && value == "DEL" ? Colors.red
@@ -29,7 +29,7 @@ class Button extends StatelessWidget {
                 highlightColor: Colors.grey,
                 onTap: (
                     value == "xʸ" || value == "eˣ" || value == "(" ||
-                    value == ")" || value == "←" || value == "→")
+                    value == ")" || value == "←" || value == "→" || value == "(−)" )
                     ? null
                     : () => reader.buttonsCallback(value),
               child: Container(
