@@ -29,7 +29,7 @@ class Button extends StatelessWidget {
                 highlightColor: Colors.grey,
                 onTap: (
                     value == "xʸ" || value == "eˣ" || value == "(" ||
-                    value == ")" || value == "←" || value == "→" || value == "(−)" )
+                    value == ")" || value == "←" || value == "→" || value == "(−)")
                     ? null
                     : () => reader.buttonsCallback(value),
               child: Container(
