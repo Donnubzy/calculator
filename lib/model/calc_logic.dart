@@ -26,7 +26,7 @@ class CalculatorLogic {
       case "log₁₀" :
         return log(a) / ln10;
       case "log₂" :
-        return logAToBaseB(a.toInt(), 2).toDouble();
+        return logAToBaseB(a, 2);
       case "ln" :
         return log(a);
       case "!" :
@@ -75,15 +75,16 @@ class CalculatorLogic {
   }
 
   /// LOGARITHM
-  int logAToBaseB(int a, int b){
-    var sum = a;
-    var num = 0;
+  double logAToBaseB(double a, int b){
+    double sum = a;
+    double num = 0;
     while(1 < sum){
       num ++;
-      sum = (sum / b).toInt();
+      sum = (sum / b);
     }
     return num;
   }
+
 
 
   double get piValue => pi;
