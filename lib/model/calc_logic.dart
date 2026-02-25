@@ -16,13 +16,13 @@ class CalculatorLogic {
       case '√' :
         return sqrt(a);
       case "x²" :
-        return pow(a, 2).toDouble();
+        return raiseAToPowerB(a, 2);
       case "x³" :
-        return pow(a, 3).toDouble();
+        return raiseAToPowerB(a, 3);
       case "xʸ" :
-        return pow(a, b).toDouble();
+        return raiseAToPowerB(a, b);
       case "|oˣ" :
-        return pow(10, a).toDouble();
+        return raiseAToPowerB(10, a);
       case "log₁₀" :
         return log(a) / ln10;
       case "log₂" :
@@ -76,16 +76,23 @@ class CalculatorLogic {
 
   /// LOGARITHM
   double logAToBaseB(double a, int b){
-    double sum = a;
+    double prod = a;
     double num = 0;
-    while(1 < sum){
+    while(1 < prod){
       num ++;
-      sum = (sum / b);
+      prod = (prod / b);
     }
     return num;
   }
 
-
+  /// RAISE TO POWER
+  double raiseAToPowerB(double a, double b){
+    double prod = a;
+    for(double i = 1; i < b; i++){
+      prod *= a;
+    }
+    return prod;
+  }
 
   double get piValue => pi;
   double get eValue => e;
